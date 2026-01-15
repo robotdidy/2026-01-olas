@@ -1,17 +1,15 @@
 # Olas audit details
-- Total Prize Pool: XXX XXX USDC (Airtable: Total award pool)
-    - HM awards: up to XXX XXX USDC (Airtable: HM (main) pool)
-        - If no valid Highs or Mediums are found, the HM pool is $0 (🐺 C4 EM: adjust in case of tiered pools)
-    - QA awards: XXX XXX USDC (Airtable: QA pool)
-    - Judge awards: XXX XXX USDC (Airtable: Judge Fee)
-    - Scout awards: $500 USDC (Airtable: Scout fee - but usually $500 USDC)
-    - (this line can be removed if there is no mitigation) Mitigation Review: XXX XXX USDC
+- Total Prize Pool: $62,000 in USDC
+    - HM awards: up to $55,680 in USDC
+        - If no valid Highs or Mediums are found, the HM pool is $0
+    - QA awards: $2,320 in USDC
+    - Judge awards: $3,500 in USDC
+    - Scout awards: $500 in USDC
 - [Read our guidelines for more details](https://docs.code4rena.com/competitions)
 - Starts January 22nd, 2026 20:00 UTC
 - Ends February 9th, 2026 20:00 UTC
 
 ### ❗ Important notes for wardens
-(🐺 C4 staff: delete the PoC requirement section if not applicable - i.e. for non-Solidity/EVM audits.)
 1. Since this audit includes live/deployed code, **all submissions will be treated as sensitive**:
     - Wardens are encouraged to submit High-risk submissions affecting live code promptly, to ensure timely disclosure of such vulnerabilities to the sponsor and guarantee payout in the case where a sponsor patches a live critical during the audit.
     - Submissions will be hidden from all wardens (SR and non-SR alike) by default, to ensure that no sensitive issues are erroneously shared.
