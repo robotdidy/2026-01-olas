@@ -1,0 +1,9 @@
+[submodule "autonolas-governance"]
+	path = autonolas-governance
+	url = https://github.com/valory-xyz/autonolas-governance
+[submodule "autonolas-tokenomics"]
+	path = autonolas-tokenomics
+	url = https://github.com/valory-xyz/autonolas-tokenomics
+[submodule "autonolas-registries"]
+	path = autonolas-registries
+	url = https://github.com/valory-xyz/autonolas-registries
