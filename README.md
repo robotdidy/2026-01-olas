@@ -63,7 +63,7 @@ The audit encompasses parts of governance, tokenomics, and registries of the Ola
 
 - `autonolas-governance`: Contains the Autonolas OLAS token and the governance part of the on-chain protocol. Here, the audit focusses on L1 governance contracts, cross-chain contracts that extends L1 governance to multiple L2s via bridges, security guards ensuring only authorized operations execute on each chain from CM, and token burning.  
 - `autonolas-tokenomics`: Contains the tokenomics part of Autonolas onchain-protocol. Specifically, the audit focusses on the logic used to update infation in tokenomics, cross-chain staking distribution system for L2 chains,  and a system that combines protocol-owned liquidity, algorithmic position optimization, and cross-chain buyback-and-burn mechanisms to manage protocol-owned-liquidity and treasury assets across multiple chains.
-- `autonolas-registries`: Contains the Autonolas component / agent / service registries part of the on-chain protocol. The focus of the audid here is the service registry and management system that combines service lifecycle management via manager contract, multisig wallet creation with recovery mechanisms, activity-based staking rewards, and metadata management.
+- `autonolas-registries`: Contains the Autonolas component / agent / service registries part of the on-chain protocol. The focus of the audit here is the service registry and management system that combines service lifecycle management via manager contract, multisig wallet creation with recovery mechanisms, activity-based staking rewards, and metadata management.
 
 ## Links
 
