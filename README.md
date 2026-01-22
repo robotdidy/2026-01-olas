@@ -41,16 +41,16 @@ _Anything included in this section is considered a publicly known issue and is t
 
 The known issues (some of them intended by design) that are not in scope for this audit are outlined in the following documents:
 
-- https://github.com/code-423n4/2024-05-olas/blob/main/governance/docs/Vulnerabilities_list_governance.pdf
-- https://github.com/code-423n4/2024-05-olas/blob/main/registries/docs/Vulnerabilities_list_registries.pdf
-- https://github.com/code-423n4/2024-05-olas/blob/main/tokenomics/docs/Vulnerabilities_list_tokenomics.pdf
+- https://github.com/valory-xyz/autonolas-governance/blob/v1.2.5-pre-external-audit/docs/Vulnerabilities_list_governance.pdf 
+- https://github.com/valory-xyz/autonolas-registries/blob/v1.3.2-pre-external-audit/docs/Vulnerabilities_list_registries.pdf
+- https://github.com/valory-xyz/autonolas-tokenomics/blob/v1.4.2-pre-external-audit/docs/Vulnerabilities_list_tokenomics.pdf
 
 Additionally, the following items are not in scope for this audit:
 
-- All vulnerabilities mentioned in [governance audits folder](https://github.com/code-423n4/2024-05-olas/blob/main/governance/audits), [registies audits folder](https://github.com/code-423n4/2024-05-olas/blob/main/registries/audits), [tokenomics audits folder](https://github.com/code-423n4/2024-05-olas/blob/tokenomics/registries/audits)
-- All vulnerabilities mentioned in [governance docs folder](https://github.com/code-423n4/2024-05-olas/blob/main/governance/docs), [registies docs folder](https://github.com/code-423n4/2024-05-olas/blob/main/registries/docs), [tokenomics docs folder](https://github.com/code-423n4/2024-05-olas/blob/main/tokenomics/docs)
-- All vulnerabilities mentioned in [governance test folder](https://github.com/code-423n4/2024-05-olas/blob/main/governance/test), [registies test folder](https://github.com/code-423n4/2024-05-olas/blob/main/registries/test), [tokenomics test folder](https://github.com/code-423n4/2024-05-olas/blob/main/tokenomics/test)
-- All vulnerabilities mentioned in the comments on the contracts code within [governance contracts folder](https://github.com/code-423n4/2024-05-olas/blob/main/governance/contracts), [registies contracts folder](https://github.com/code-423n4/2024-05-olas/blob/main/registries/contracts), [tokenomics contracts folder](https://github.com/code-423n4/2024-05-olas/blob/main/tokenomics/contracts)
+- All vulnerabilities mentioned in [governance audits folder](https://github.com/valory-xyz/autonolas-governance/tree/v1.2.5-pre-external-audit/audits), [registies audits folder](https://github.com/valory-xyz/autonolas-registries/tree/v1.3.2-pre-external-audit/audits), [tokenomics audits folder](https://github.com/valory-xyz/autonolas-tokenomics/tree/v1.4.2-pre-external-audit/audits)
+- All vulnerabilities mentioned in [governance docs folder](https://github.com/valory-xyz/autonolas-governance/tree/v1.2.5-pre-external-audit/docs), [registies docs folder](https://github.com/valory-xyz/autonolas-registries/tree/v1.3.2-pre-external-audit/docs), [tokenomics docs folder](https://github.com/valory-xyz/autonolas-tokenomics/tree/v1.4.2-pre-external-audit/docs)
+- All vulnerabilities mentioned in [governance test folder](https://github.com/valory-xyz/autonolas-governance/tree/v1.2.5-pre-external-audit/test), [registies test folder](https://github.com/valory-xyz/autonolas-registries/tree/v1.3.2-pre-external-audit/test), [tokenomics test folder](https://github.com/valory-xyz/autonolas-tokenomics/tree/v1.4.2-pre-external-audit/test)
+- All vulnerabilities mentioned in the comments on the contracts code within [governance contracts folder](https://github.com/valory-xyz/autonolas-governance/tree/v1.2.5-pre-external-audit/contracts), [registies contracts folder](https://github.com/valory-xyz/autonolas-registries/tree/v1.3.2-pre-external-audit/contracts), [tokenomics contracts folder](https://github.com/valory-xyz/autonolas-tokenomics/tree/v1.4.2-pre-external-audit/contracts)
 - All vulnerabilities found in the inherited source code from [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts) and [Solmate](https://github.com/transmissions11/solmate)
 - All vulnerabilities found in the inherited source code for the bridging contracts.
 - All vulnerabilities found in code based on or inspired by [Maple Finance](https://github.com/maple-labs), [Curve DAO](https://github.com/curvefi/curve-dao-contracts), [Uniswap Lab](https://github.com/Uniswap/v2-core), [PaulRBerg](https://github.com/paulrberg/prb-math), [Jeiwan](https://github.com/Jeiwan/zuniswapv2), [Safe Ecosystem](https://github.com/safe-global/safe-contracts) and that are already reported to one of those projects.
@@ -59,11 +59,11 @@ Finally, all vulnerabilities that arise from misconfigured registration from use
 
 # Overview
 
-The audit encompasses the governance, tokenomics, and registries repositories of the Olas project. Specifically:
+The audit encompasses parts of governance, tokenomics, and registries of the Olas protocol. Specifically:
 
-- `autonolas-governance`: Contains the Autonolas OLAS token and the governance part of the on-chain protocol
-- `autonolas-tokenomics`: Contains the tokenomics part of Autonolas onchain-protocol contracts
-- `autonolas-registries`: Contains the Autonolas component / agent / service registries part of the on-chain protocol
+- `autonolas-governance`: Contains the Autonolas OLAS token and the governance part of the on-chain protocol. Here, the audit focusses on L1 governance contracts, cross-chain contracts that extends L1 governance to multiple L2s via bridges, security guards ensuring only authorized operations execute on each chain from CM, and token burning.  
+- `autonolas-tokenomics`: Contains the tokenomics part of Autonolas onchain-protocol. Specifically, the audit focusses on the logic used to update infation in tokenomics, cross-chain staking distribution system for L2 chains,  and a system that combines protocol-owned liquidity, algorithmic position optimization, and cross-chain buyback-and-burn mechanisms to manage protocol-owned-liquidity and treasury assets across multiple chains.
+- `autonolas-registries`: Contains the Autonolas component / agent / service registries part of the on-chain protocol. The focus of the audit here is the service registry and management system that combines service lifecycle management via manager contract, multisig wallet creation with recovery mechanisms, activity-based staking rewards, and metadata management.
 
 ## Links
 
@@ -113,7 +113,7 @@ The audit encompasses the governance, tokenomics, and registries repositories of
 | autonolas-tokenomics/contracts/pol/LiquidityManagerCore.sol                             |
 | autonolas-tokenomics/contracts/pol/LiquidityManagerETH.sol                              |
 | autonolas-tokenomics/contracts/pol/LiquidityManagerOptimism.sol                         |
-| autonolas-tokenomics/contracts/pol/NeihborhoodScanner.sol                               |
+| autonolas-tokenomics/contracts/pol/NeighborhoodScanner.sol                              |
 | autonolas-tokenomics/contracts/proxies/LiquidityManagerProxy.sol                        |
 | autonolas-tokenomics/contracts/staking/DefaultTargetDispenserL2.sol                     |
 | autonolas-tokenomics/contracts/utils/Bridge2Burner.sol                                  |
@@ -143,10 +143,7 @@ Any vulnerability that relies on one of the following attack vectors or a combin
 
 The code is huge and very sparse to describe the invariants briefly here; the following docs can be used instead:
 
-- [Olas staking whitepaper](https://staking.olas.network/poaa-whitepaper.pdf)
-- [Olas staking smart contracts](https://github.com/valory-xyz/autonolas-registries/blob/main/docs/StakingSmartContracts.pdf).
 - [Autonolas whitepaper](https://www.autonolas.network/documents/whitepaper/Whitepaper%20v1.0.pdf)
-- [PoL Management](https://github.com/valory-xyz/autonolas-aip/blob/042c70f23312cea9b82dff2c0bc4363b307d2be4/content/aips/aip-7/core-aip-ultrasound-pol.md)
 
 The following are relevant for governance-related contracts:
 
@@ -163,8 +160,11 @@ The following are relevant for registries-related contracts:
 The following are relevant for tokenomics-related contract:
 
 - [Token Inflation Update](https://github.com/valory-xyz/autonolas-tokenomics/blob/main/docs/Update_tokenomics_inflation.pdf)
+- [PoL Management](https://github.com/valory-xyz/autonolas-aip/blob/042c70f23312cea9b82dff2c0bc4363b307d2be4/content/aips/aip-7/core-aip-ultrasound-pol.md)
 - [Summary of tokenomics model](https://github.com/valory-xyz/autonolas-tokenomics/blob/main/docs/Autonolas_tokenomics_audit.pdf)
 - [Autonolas tokenomics paper](https://www.autonolas.network/documents/whitepaper/Autonolas_Tokenomics_Core_Technical_Document.pdf)
+- [Olas staking whitepaper](https://staking.olas.network/poaa-whitepaper.pdf)
+- [Olas staking smart contracts](https://github.com/valory-xyz/autonolas-registries/blob/main/docs/StakingSmartContracts.pdf).
 
 ## All trusted roles in the protocol
 
