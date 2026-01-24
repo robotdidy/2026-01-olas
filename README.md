@@ -33,7 +33,13 @@
 
 [V12](https://v12.zellic.io/) is [Zellic](https://zellic.io)'s in-house AI auditing tool. It is the only autonomous Solidity auditor that [reliably finds Highs and Criticals](https://www.zellic.io/blog/introducing-v12/). All issues found by V12 will be judged as out of scope and ineligible for awards.
 
-V12 findings will typically be posted in this section within the first two days of the competition.
+V12 findings can be viewed here:
+
+[autonolas-governance](https://github.com/code-423n4/2026-01-olas/blob/main/code_423n4_autonolas_v12_governance__main_e7b6039_findings_2026-01-23-findings.md)
+
+[autonolas-registries](https://github.com/code-423n4/2026-01-olas/blob/main/code_423n4_autonolas_v12_registries_v2__main_d4f7d34_findings_2026-01-23-findings.md)
+
+[autonolas-tokenomics](https://github.com/code-423n4/2026-01-olas/blob/main/code_423n4_autonolas_v12_tokenomics_v2__main_bbec5ac_findings_2026-01-23-findings.md)
 
 ## Publicly known issues
 
